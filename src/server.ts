@@ -44,7 +44,7 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
       res.status(400).end("Expected image_url query")
     }
     const filteredImage = await filterImageFromURL(req.query.image_url)
-    res.sendFile(filteredImage, (err) => {
+    res.status(200).sendFile(filteredImage, (err) => {
       deleteLocalFiles([filteredImage])
     })
   })
